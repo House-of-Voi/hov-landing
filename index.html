@@ -4,21 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>House of Voi</title>
-  <!-- Playfair Display -->
+  <!-- Playfair Display with Italic -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
     rel="stylesheet"
   />
   <style>
-    /* CSS Variables */
     :root {
       --bg: #111111;
       --gold: #D4AF37;
       --font: 'Playfair Display', serif;
-      --letter-gap: 0.5ch;
+      --letter-gap: 0.2ch;
     }
-
-    /* Reset & Global */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0; padding: 0;
@@ -26,8 +23,6 @@
     html, body {
       height: 100%;
     }
-
-    /* Centering with CSS Grid */
     body {
       display: grid;
       place-items: center;
@@ -35,31 +30,25 @@
       color: var(--gold);
       overflow: hidden;
     }
-
-    /* The title container is also a grid row of letters */
     h1 {
       display: grid;
       grid-auto-flow: column;
       gap: var(--letter-gap);
       font-family: var(--font);
+      font-style: italic;
       font-weight: 700;
       font-size: clamp(3rem, 12vw, 10rem);
       line-height: 1;
     }
     h1 .space {
-      /* Invisible spacer between words */
       width: clamp(0.5rem, 2vw, 1rem);
     }
-
-    /* Each letter can host its own hover effect */
     h1 span {
       position: relative;
       display: inline-block;
       cursor: default;
       transition: filter 0.3s ease;
     }
-
-    /* Lighting sweep via a pseudo-element */
     h1 span::before {
       content: '';
       position: absolute;
@@ -75,8 +64,6 @@
       transition: transform 0.6s ease-out, opacity 0.3s ease-out;
       pointer-events: none;
     }
-
-    /* On hover, sweep across and brighten */
     h1 span:hover::before {
       transform: translateX(120%) skewX(-20deg);
       opacity: 1;
@@ -84,8 +71,6 @@
     h1 span:hover {
       filter: brightness(1.2);
     }
-
-    /* Respect reduced-motion settings */
     @media (prefers-reduced-motion: reduce) {
       h1 span,
       h1 span::before {
